@@ -79,4 +79,16 @@ public class Character {
     public void addCash(int c) {
         this.purse += c;
     }
+
+    public void item(String s) {
+        
+    }
+
+    public void trade() {
+        
+    }
+
+    public void fight() {
+        System.out.println("\nYou used " + this.weapon.getName() + " ");
+    }
 }
