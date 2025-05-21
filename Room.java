@@ -41,10 +41,10 @@ public class Room {
     private int numGold;
 
     public Room() {
-        this.size = (int) (Math.random() + 1) * 12;
+        this.size = (int) (Math.random() * 12 + 1);
         this.numGold = 10;
         for (int i = 0; i < this.size; i++) {
-            int temp = (int) Math.random() * enemiesList.length;
+            int temp = (int) (Math.random() * enemiesList.length);
             this.enemies.add(enemiesList[temp]);
             this.numGold *= this.size;
         }
@@ -55,7 +55,9 @@ public class Room {
     }
 
     public void getEnemies() {
-        for (int i = 0; i < enemies.length; i++) {
+        System.out.println("\nEnemies:");
+        System.out.println("\n");
+        for (int i = 0; i < enemies.size(); i++) {
             System.out.println(enemies.get(i).getName());
         }
     }

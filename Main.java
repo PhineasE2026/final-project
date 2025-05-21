@@ -16,7 +16,7 @@ public class Main {
       
       System.out.println("\n\nYou have now entered... the dungeon.\nYou are in the very first room, at the bottom floor.\nIn each room, there are monsters. You need to destroy them all.\nFrom now on, enter item to use an item.\nEnter trade to forfeit a fight, at the cost of your purse.\nEnter any other input to attack.");
       while (game) {
-         System.out.println("\n\nEnemies: " + md.getEnemies());
+         md.getEnemies();
          move = scan.nextLine();
          if (move.equals("item")){
             System.out.println("What item would you like to use?" + p1.getBackpack());
@@ -30,6 +30,7 @@ public class Main {
             p1.fight();
          }
          md.traverseRoom();
+         game = false;
       }
    }
 }
