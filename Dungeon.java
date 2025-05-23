@@ -6,6 +6,7 @@ public class Dungeon {
     private int curLay = 0;
     private int curRow = 0;
     private int curCol = 0;
+    private boolean comp;
 
     public Dungeon() {
         rooms = new Room[5][3][2];
@@ -33,7 +34,8 @@ public class Dungeon {
                 curLay++;
             } else {
                 curLay = 0;
-                System.out.println("Tower cleared");
+                System.out.println("Ground floor reached. You won!");
+                comp = true;
             }
         }
     }
@@ -51,5 +53,17 @@ public class Dungeon {
 
     public void getEnemies() {
         currentRoom.getEnemies();
+    }
+
+    public Character getEnemy(int i) {
+        return currentRoom.getEnemy(i);
+    }
+
+    public int getEnemiesLength() {
+        return currentRoom.getEnemiesLength();
+    }
+
+    public boolean getComp() {
+        return comp;
     }
 }

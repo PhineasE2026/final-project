@@ -54,12 +54,20 @@ public class Room {
         return this.size;
     }
 
+    public Character getEnemy(int i) {
+        return enemies.get(i+1);
+    }
+
+    public int getEnemiesLength() {
+        return enemies.size();
+    }
+
     public void getEnemies() {
         System.out.println("\nEnemies:");
-        System.out.println("\n");
         for (int i = 0; i < enemies.size(); i++) {
             System.out.println(enemies.get(i).getName());
         }
+        System.out.println("\n");
     }
 
     public Character[] getEnemiesList() {

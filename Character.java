@@ -80,15 +80,56 @@ public class Character {
         this.purse += c;
     }
 
-    public void item(String s) {
-        
+    public void fight(Character other) {
+        while (other.getHealth() > 0 && this.health > 0) {
+            int temp = (int) (Math.random() * 10) + 1;
+            other.health -= weapon.getDamage();
+            System.out.println("You struck " + other.getName() + " with your " + weapon.getName() + ", dealing " + weapon.getDamage() + " damage!");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (temp > 9) {
+                health -= other.getWeapon().getDamage();
+                System.out.println(other.getName() + " struck you back, dealing " + other.getWeapon().getDamage() + " damage!");
+                System.out.println("Your health has decreased to: " + this.health);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (this.health > 0) {
+            System.out.println(other.getName() + " defeated! Purse collected.");
+            this.purse += other.getPurse();
+            System.out.println("Your purse now contains " + this.purse + " coins.");
+        }
+        if (other.getHealth() > 0) {
+            System.out.println("You've fainted! Using healing item...");
+            item("Heal");
+            System.out.println("Your health has recovered to: " + this.health);
+        }
     }
 
+    public void item(String type) {
+        if (type.equals("Heal")) {
+            this.health += backpack.get(0).getHeal();
+            System.out.println("Health restored!");
+        }
+        else if (type.equals("Power-up")) {
+            this.health += backpack.get(0).getHeal();
+            this.weapon.setDamage(weapon.getDamage() * backpack.get(0).getDamage());
+            System.out.println("Power-up activated. Damage increased, health increased.");
+        }
+        else {
+            System.out.println("Not an item!");
+        }
+    }
+    
     public void trade() {
-        
-    }
-
-    public void fight() {
-        System.out.println("\nYou used " + this.weapon.getName() + " ");
+        this.purse = 0;
+        System.out.println("You've lost all your money, but transitioned to the next room.");
     }
 }

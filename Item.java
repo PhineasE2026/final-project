@@ -26,4 +26,22 @@ public class Item {
     public void setUse(String u) {
         this.use = u;
     }
+
+    public double getHeal() {
+        if (this.name.equals("Potion")) {
+            return 100;
+        }
+        else {
+            return 50;
+        }
+    }
+
+    public double getDamage() {
+        if (this.name.equals("Butterscotch Pie")) {
+            return 2;
+        }
+        else {
+            return 3;
+        }
+    }
 }
